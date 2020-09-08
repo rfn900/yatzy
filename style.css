@@ -8,19 +8,19 @@ body {
     display: grid;
     height: 100%;
     place-items: center;
-    background-color: lightslategrey;
+    background-color: #E0E2DB;
 }
 
 table {
-    border: 2px #000000 solid;
+    border: 2px #191716 solid;
     border-collapse: collapse;
 }
 
 td {
-    background-color: #c4c4c4;
+    background-color: #BEB7A4;
     min-width: 30px;
     padding: 3px 20px 3px 5px;
-    border: 1px #313131 solid;
+    border: 1px #191716 solid;
 }
 
 td:nth-child(odd) {
@@ -28,11 +28,34 @@ td:nth-child(odd) {
 }
 
 .info-row td {
-    background-color: #e4e4e4;
+    background-color: #E0E2DB;
     border: 2px black solid;
 }
 
 .info-row-main {
     font-weight: 900;
-    background-color: gray!important;
+    background-color:#3D348B!important;
+    color: #ffffff;
+}
+
+td>input {
+    width: 5vw;
+    border: 0;
+    background-color:inherit;
+}
+
+.button-placeholder{
+    position: absolute;
+    margin-top: 2px;
+    float: right;
+}
+
+.useradd-button{
+    width:15vw;
+    height:50px;
+    background-color: #E6AF2E;
+    color: #191716;
+    border: 0;
+    font-size: 20px;
+    font-weight: bold;
 }

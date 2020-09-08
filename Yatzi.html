@@ -17,10 +17,47 @@
                 <tbody>
                     <tr class="info-row">
                         <td class="info-row-main">Spelare/Player</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td id="player_1">
+                            <input 
+                                type="text" 
+                                name="player_1" 
+                                placeholder="Player 1..."
+                                onfocusin="showUserAddButton()"
+                                onfocusout="removeUserAddButton()"
+                            >
+
+                        </td>
+                        <td id="player_2">
+                            <input 
+                                type="text" 
+                                name="player_2" 
+                                placeholder="Player 2..."
+                                onfocusin="showUserAddButton()"
+                                onfocusout="removeUserAddButton()"
+                            >
+
+                        </td>
+                        <td id="player_3">
+                            <input 
+                                type="text" 
+                                name="player_3" 
+                                placeholder="Player 3..."
+                                onfocusin="showUserAddButton()"
+                                onfocusout="removeUserAddButton()"
+
+                            >
+
+                        </td>
+                        <td id="player_4">
+                            <input 
+                                type="text" 
+                                name="player_4" 
+                                placeholder="Player 4..."
+                                onfocusin="showUserAddButton()"
+                                onfocusout="removeUserAddButton()"
+                            >
+
+                        </td>
                     </tr>
                     <tr>
                         <td>Ettor/Ones</td>
@@ -150,8 +187,13 @@
                     </tr>
                 </tbody>
             </table>
+            <div id="userAddButton" class="button-placeholder"></div>
+
         </div>
+
     </div>
+
+    <script src="js/game.js"></script>
 </body>
 
 </html>
