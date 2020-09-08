@@ -1,0 +1,38 @@
+html,
+body {
+    margin: 0;
+    height: 100%;
+}
+
+.container {
+    display: grid;
+    height: 100%;
+    place-items: center;
+    background-color: lightslategrey;
+}
+
+table {
+    border: 2px #000000 solid;
+    border-collapse: collapse;
+}
+
+td {
+    background-color: #c4c4c4;
+    min-width: 30px;
+    padding: 3px 20px 3px 5px;
+    border: 1px #313131 solid;
+}
+
+td:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.info-row td {
+    background-color: #e4e4e4;
+    border: 2px black solid;
+}
+
+.info-row-main {
+    font-weight: 900;
+    background-color: gray!important;
+}
