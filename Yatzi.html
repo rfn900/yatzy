@@ -10,82 +10,83 @@
 
 <body>
     <div class="container">
+        
         <div class="yatzy-table">
 
-            <table>
-
+            <table id="main-table"> 
+                <h1 class="main-title">It is Yatzy Time</h1>
                 <tbody>
                     <tr class="info-row">
                         <td class="info-row-main">Spelare/Player</td>
                         <td id="player_1">
-                            <input id="player_1_input" type="text" name="player_1" placeholder="Player 1..." onfocusin="showUserAddButton()" onfocusout="removeUserAddButton()">
+                            <input id="player_1_input" min="0" type="text" name="player_1" placeholder="Player 1..." onfocusin="showUserAddButton()" onfocusout="removeUserAddButton()">
 
                         </td>
                         <td id="player_2">
-                            <input id="player_2_input" type="text" name="player_2" placeholder="Player 2..." onfocusin="showUserAddButton()" onfocusout="removeUserAddButton()">
+                            <input id="player_2_input" min="0" type="text" name="player_2" placeholder="Player 2..." onfocusin="showUserAddButton()" onfocusout="removeUserAddButton()">
 
                         </td>
                         <td id="player_3">
-                            <input id="player_3_input" type="text" name="player_3" placeholder="Player 3..." onfocusin="showUserAddButton()" onfocusout="removeUserAddButton()">
+                            <input id="player_3_input" min="0" type="text" name="player_3" placeholder="Player 3..." onfocusin="showUserAddButton()" onfocusout="removeUserAddButton()">
 
                         </td>
                         <td id="player_4">
-                            <input id="player_4_input" type="text" name="player_4" placeholder="Player 4..." onfocusin="showUserAddButton()" onfocusout="removeUserAddButton()">
+                            <input id="player_4_input" min="0" type="text" name="player_4" placeholder="Player 4..." onfocusin="showUserAddButton()" onfocusout="removeUserAddButton()">
 
                         </td>
                     </tr>
                     <tr>
                         <td>Ettor/Ones</td>
-                        <td></td>
+                        <td id="player1-1" class="row-one"></td>
                         <td></td>
                         <td></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td>Tvåor/Twos</td>
-                        <td></td>
+                        <td id="player1-2" class="row-two"></td>
                         <td></td>
                         <td></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td>Treor/Threes</td>
-                        <td></td>
+                        <td id="player1-3" class="row-three"></td>
                         <td></td>
                         <td></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td>Fyror/Fours</td>
-                        <td></td>
+                        <td id="player1-4" class="row-four"></td>
                         <td></td>
                         <td></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td>Femmor/Fives</td>
-                        <td></td>
+                        <td id="player1-5" class="row-five"></td>
                         <td></td>
                         <td></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td>Sexor/Sixes</td>
-                        <td></td>
+                        <td id="player1-6" class="row-sex"></td>
                         <td></td>
                         <td></td>
                         <td></td>
                     </tr>
                     <tr class="info-row">
                         <td class="info-row-main">Summa/Sum</td>
-                        <td></td>
+                        <td id="summa"></td>
                         <td></td>
                         <td></td>
                         <td></td>
                     </tr>
                     <tr class="info-row">
                         <td class="info-row-main">Bonus</td>
-                        <td></td>
+                        <td id="bonus"></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -134,7 +135,7 @@
                     </tr>
                     <tr>
                         <td>Kåk/Full house</td>
-                        <td></td>
+                        <td id="fh-player1"></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -162,7 +163,12 @@
                     </tr>
                 </tbody>
             </table>
-            <div id="userAddButton" class="button-placeholder"></div>
+            <div class="dialogue">
+                <div id="userAddButton" class="button-placeholder"></div>
+                <div class="calculateButton">
+                    <button class='calculate-button' onclick='countTheDices()'>Click to Play</button>
+                </div>
+            </div>
 
         </div>
 

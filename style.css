@@ -11,9 +11,17 @@ body {
     background-color: #E0E2DB;
 }
 
+
 table {
+    position: relative;
+    top:0;
     border: 2px #191716 solid;
     border-collapse: collapse;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+table>h1 {
+    background-color: red;
 }
 
 td {
@@ -44,18 +52,33 @@ td>input {
     background-color:inherit;
 }
 
-.button-placeholder{
-    position: absolute;
-    margin-top: 2px;
-    float: right;
+.dialogue{
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
 }
 
-.useradd-button{
-    width:15vw;
+.button-placeholder{
+    display: flex;
+    
+    align-items: flex-end;
+}
+.calculateButton{
+    margin-left: auto;
+    display: flex;
+    float:right;
+}
+
+.button, .calculate-button{
     height:50px;
     background-color: #E6AF2E;
     color: #191716;
-    border: 0;
+    border: 1px solid black;
     font-size: 20px;
     font-weight: bold;
+    margin-top: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
+
