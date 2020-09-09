@@ -1,6 +1,3 @@
-document.addEventListener("DOMContentLoaded", function(e){  
-
-})
 
 function showUserAddButton (){
   let isPlaceholderFilled = document.getElementById("userAddButton").innerHTML && true
@@ -9,11 +6,16 @@ function showUserAddButton (){
   if (!isPlaceholderFilled) document.getElementById("userAddButton").innerHTML=button;
 }
 
-function removeUserAddButton (){
-//  document.getElementById("userAddButton").innerHTML=""
-}
+/*function removeUserAddButton (){
+  document.getElementById("userAddButton").innerHTML=""
+}*/
 
-function confirmUserName (){
+document.getElementById("startGameButton").addEventListener("click", function(){
+
+  document.getElementById("userAddButton").innerHTML=""
+})
+
+function confirmUserName () {
 
 let names = [
 document.getElementById("player_1_input"),
@@ -21,17 +23,19 @@ document.getElementById("player_2_input"),
 document.getElementById("player_3_input"),
 document.getElementById("player_4_input")
 ]
-
+console.log("aqui")
 names.forEach((item,index) => {
   let test = item && true
   var theid = ""
   var new_td = ""
   
-  if (test && item.value != ""){
+  if (test && (item.value != "")){
     theid = `player_${index+1}`  
     var name_display = document.getElementById(theid)
     new_td = `<h2>${item.value}</h2>`
     name_display.innerHTML=new_td
+    gameButton = document.getElementById("calculateButton")
+    gameButton.innerHTML = "<button id='startGameButton' class='calculate-button' onclick='countTheDices()'>Click to Play</button>"
   }else if (test && item.value == ""){
     let button = "<button class='button' onclick='confirmUserName()'>Add Another Player</button>"
     document.getElementById("userAddButton").innerHTML=button
@@ -64,7 +68,6 @@ function calculateTotal (){
 
 }
 
-
 function rollTheDice(){
   let nofsides = 6
   let dice = []
@@ -74,7 +77,6 @@ function rollTheDice(){
   console.log(dice)
   return dice
 }
-//diceresults()
 
 function countTheDices(){
   dices=rollTheDice()
