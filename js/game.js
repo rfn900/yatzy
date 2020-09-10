@@ -32,7 +32,7 @@ names.forEach((item,index) => {
   if (test && (item.value != "")){
     theid = `player_${index+1}`  
     var name_display = document.getElementById(theid)
-    new_td = `<h2>${item.value}</h2>`
+    new_td = item.value
     name_display.innerHTML=new_td
     gameButton = document.getElementById("calculateButton")
     gameButton.innerHTML = "<button id='startGameButton' class='calculate-button' onclick='countTheDices()'>Click to Play</button>"
@@ -72,7 +72,9 @@ function rollTheDice(){
   let nofsides = 6
   let dice = []
   for (let i=0; i<5; i++){
-    dice[i]=Math.floor(Math.random() * nofsides +1)
+    dice[i]=Math.floor(Math.random() * nofsides) +1
+    document.getElementById("dice-show-"+(i+1)).innerHTML=`<img src='./images/Alea_${dice[i]}.png'>`
+
   } 
   console.log(dice)
   return dice

@@ -5,14 +5,17 @@ body {
 }
 
 .container {
-    display: grid;
+    display: flex;
     height: 100%;
-    place-items: center;
+    flex-direction:column;
+    justify-content:center;
+    align-items: center;
     background-color: #E0E2DB;
 }
 
 
 table {
+    margin: 0;
     position: relative;
     top:0;
     border: 2px #191716 solid;
@@ -20,9 +23,7 @@ table {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
-table>h1 {
-    background-color: red;
-}
+
 
 td {
     background-color: #BEB7A4;
@@ -53,17 +54,24 @@ td>input {
 }
 
 .dialogue{
+    position: fixed;
+    background-color:#3D348B;
+    width: initial;
+    right: 15%;
+    top: 23vh;
+    margin-bottom: 10px;
     display: flex;
     flex-direction: row;
     align-content: space-between;
 }
 
 .button-placeholder{
+    position: relative;
     display: flex;
-    
     align-items: flex-end;
 }
 .calculateButton{
+    position: relative;
     margin-left: auto;
     display: flex;
     float:right;
@@ -82,3 +90,28 @@ td>input {
 
 }
 
+.diceShow{
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    top: 3vh;
+    margin: 0;
+    width: 70%;
+    height: 20vh;
+    border: 1px dotted #131313;
+    background-color:#ffffff;
+}
+
+.diceShow__dice img{
+    width: 5vw;
+}
+
+.diceShow  ul{
+    text-align: center;
+}
+.diceShow ul li{
+    list-style-type: none;
+    float: left;
+    text-align: center;
+}
