@@ -10,10 +10,10 @@ function showUserAddButton (){
   document.getElementById("userAddButton").innerHTML=""
 }*/
 
-document.getElementById("startGameButton").addEventListener("click", function(){
+//document.getElementById("startGameButton").addEventListener("click", function(){
 
-  document.getElementById("userAddButton").innerHTML=""
-})
+//  document.getElementById("userAddButton").innerHTML=""
+//})
 
 function confirmUserName () {
 
@@ -69,16 +69,31 @@ function calculateTotal (){
 }
 
 function rollTheDice(){
+  checkboxArray=[]
+  for (let j=0; j<5; j++){
+    checkboxArray[j]=document.getElementById("save-input-"+(j+1)).checked
+    console.log(checkboxArray)
+  }
+  
   let nofsides = 6
   let dice = []
-  for (let i=0; i<5; i++){
-    dice[i]=Math.floor(Math.random() * nofsides) +1
-    document.getElementById("dice-show-"+(i+1)).innerHTML=`<img src='./images/Alea_${dice[i]}.png'>`
+  let antalSpel = Number(document.getElementById("antalSpel").innerText)
+  if (antalSpel>0){
+    for (let i=0; i<5; i++){
+      if(!checkboxArray[i]){
+        dice[i]=Math.floor(Math.random() * nofsides) +1
+        let updatefield = `<img src='./images/Alea_${dice[i]}.png'><input id="save-input-${(i+1)}" type="checkbox">`
+        document.getElementById("dice-show-"+(i+1)).innerHTML=updatefield
+      }
+    }
+    document.getElementById("antalSpel").innerHTML = antalSpel-1  
+  }
 
-  } 
   console.log(dice)
   return dice
 }
+
+document.DOMon
 
 function countTheDices(){
   dices=rollTheDice()
@@ -182,3 +197,28 @@ function isFullHouse(count){
   isFH? console.log("Is FullHouse"):console.log("Is Not Fullhouse")
 }
 
+let playbox = document.getElementById("playbox")
+playbox.addEventListener("mouseover", changecolor)
+playbox.addEventListener("mouseout", changeback)
+
+
+function changecolor(){
+  playbox.style.borderColor = "#E6AF2E"
+}
+function changeback(){
+  playbox.style.borderColor = "#3D348B"
+}
+
+let inputWidth = document.getElementById("width-input")
+let inputHeight = document.getElementById("height-input")
+let diceshowbox = document.getElementById("diceShowBox")
+
+inputWidth.addEventListener("change",changewidth)
+inputHeight.addEventListener("change",changeheight)
+
+function changewidth () {
+  diceshowbox.style.width = inputWidth.value+'px'
+}
+function changeheight () {
+  diceshowbox.style.height = inputHeight.value+'px'
+}
