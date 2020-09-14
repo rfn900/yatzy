@@ -13,14 +13,15 @@
         
         <div id="playbox" class="playbox">
             
-            <div class="input-box">
-                <input id="width-input" type="number"><input id="height-input" type="number">
-            </div>
-            <h2>Antal Spel: <span id="antalSpel">3</span></h2>
+         
+            <h2 id="playbox__title">
+                Round <span id="antalRounds">1</span> of 16, 
+                Dice rolls: <span id="antalSpel">3</span>
+            </h2>
             <div id = "diceShowBox" class="diceShow">
                 
                 <div id="dice-show-1" class="diceShow__dice">
-                    <img src="./images/Alea_1.png">
+                    <img src="./images/Alea_1.png" name="1">
                     <input id="save-input-1" type="checkbox">
                 </div>
                 <div id="dice-show-2" class="diceShow__dice">
@@ -44,7 +45,7 @@
             <div class="dialogue">
                <!-- <div id="userAddButton" class="button-placeholder"></div>-->
                 <div id="calculateButton" class="calculateButton">
-                    <button id='startGameButton' class='calculate-button' onclick='countTheDices()'>Click to Play</button>
+                    <button id='startGameButton' class='calculate-button'>Roll the Dices</button>
                 </div>                                    
             </div>
         </div>
@@ -70,48 +71,55 @@
                             <input id="player_4_input"  type="text" name="player_4" placeholder="P4" onfocusin="showUserAddButton()" onfocusout="removeUserAddButton()">
 
                         </td>
+                        
                     </tr>
                     <tr>
-                        <th colspan="2">Ettor/Ones</td>
-                        <td id="player1-1" class="row-one"></th>
+                        <th colspan="2">Ettor/Ones</th>
+                        <td id="player1-1" class="row-one"></td>
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td class="pointsDisplay"></td>
                     </tr>
                     <tr>
-                        <th colspan="2">Tvåor/Twos</td>
-                        <td id="player1-2" class="row-two"></th>
+                        <th colspan="2">Tvåor/Twos</th>
+                        <td id="player1-2" class="row-two"></td>
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td class="pointsDisplay"></td>
                     </tr>
                     <tr>
-                        <th colspan="2">Treor/Threes</td>
-                        <td id="player1-3" class="row-three"></th>
+                        <th colspan="2">Treor/Threes</th>
+                        <td id="player1-3" class="row-three"></td>
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td class="pointsDisplay"></td>
                     </tr>
                     <tr>
-                        <th colspan="2">Fyror/Fours</td>
-                        <td id="player1-4" class="row-four"></th>
+                        <th colspan="2">Fyror/Fours</th>
+                        <td id="player1-4" class="row-four"></td>
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td class="pointsDisplay"></td>
                     </tr>
                     <tr>
-                        <th colspan="2">Femmor/Fives</td>
-                        <td id="player1-5" class="row-five"></th>
+                        <th colspan="2">Femmor/Fives</th>
+                        <td id="player1-5" class="row-five"></td>
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td class="pointsDisplay"></td>
                     </tr>
                     <tr>
-                        <th colspan="2">Sexor/Sixes</td>
-                        <td id="player1-6" class="row-sex"></th>
+                        <th colspan="2">Sexor/Sixes</th>
+                        <td id="player1-6" class="row-sex"></td>
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td class="pointsDisplay"></td>
                     </tr>
                     <tr class="info-row">
                         <th colspan="2" class="info-row-main">Summa/Sum</th>
@@ -119,6 +127,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td style="display:none"></td>
                     </tr>
                     <tr class="info-row">
                         <th colspan="2" class="info-row-main">Bonus</th>
@@ -126,76 +135,87 @@
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td style="display:none"></td>
                     </tr>
                     <tr>
                         <th colspan="2">Par/Pair</th>
+                        <td id="player1-7"></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
+                        <td class="pointsDisplay"></td>
                     </tr>
                     <tr>
                         <th colspan="2">Två Par/Two Pairs</th>
+                        <td id="player1-8"></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
+                        <td class="pointsDisplay"></td>
                     </tr>
                     <tr>
                         <th colspan="2">Tretal/Three of a kind</th>
+                        <td id="player1-9"></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
+                        <td class="pointsDisplay"></td>
                     </tr>
                     <tr>
                         <th colspan="2">Fyrtal/Four of a kind</th>
+                        <td id="player1-10"></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
+                        <td class="pointsDisplay"></td>
                     </tr>
                     <tr>
                         <th colspan="2">Liten stege/Small straight</th>
+                        <td id="player1-11"></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
+                        <td class="pointsDisplay"></td>
                     </tr>
                     <tr>
                         <th colspan="2">Stor stege/Large strike</th>
+                        <td id="player1-12"></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
+                        <td class="pointsDisplay"></td>
                     </tr>
                     <tr>
                         <th colspan="2">Kåk/Full house</th>
-                        <td id="fh-player1"></td>
+                        <td id="player1-13"></td>
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td class="pointsDisplay"></td>
                     </tr>
                     <tr>
                         <th colspan="2">Chans/Chance</th>
+                        <td id="player1-14"></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
+                        <td class="pointsDisplay"></td>
                     </tr>
                     <tr>
                         <th colspan="2">Yatzy</th>
+                        <td id="player1-15"></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
+                        <td class="pointsDisplay"></td>
                     </tr>
                     <tr class="info-row">
                         <th colspan="2" class="info-row-main">Totalt/Total</th>
+                        <td id="totalSumma"></td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
+                        
                     </tr>
                 </tbody>
             </table>

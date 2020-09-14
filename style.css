@@ -1,16 +1,18 @@
 html,
 body {
     margin: 0;
-    height: 100%;
+    height: 748px;
+    background-color: #E0E2DB;
+
 }
 
 .container {
     display: flex;
-    height: 100%;
+    height: 748px;
     flex-direction:row;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    flex-wrap: wrap-reverse;
     align-items: center;
-    background-color: #E0E2DB;
 }
 
 .yatzy-table{
@@ -20,15 +22,14 @@ body {
 .playbox{
     position: relative;
     display: flex;
-    width: 50vw;
-    height: 50vh;
-    justify-content: space-between;
+    width: 30vw;
+    height: 40vh;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
 .diceShow{
-    border: 1px solid #3D348B;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,18 +45,18 @@ body {
 
 .dialogue{
     display: flex;
-    background-color:#3D348B;
     width: initial;
-    margin-bottom: 10px;
+    margin-top: 20px;
     align-content: space-between;
 }
 table {
+    position: fixed
     margin: 0;
     border: 2px #191716 solid;
+    border-right-width: 0;
     border-collapse: collapse;
     width: 20vw;
     height: 30vh;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     font-size: 14px;
 }
 
@@ -75,6 +76,9 @@ th{
 
 td:nth-child(odd) {
     background-color: #ffffff;
+}
+td:nth-child(6) {
+    background: none;
 }
 
 .info-row td {
@@ -120,11 +124,9 @@ td>input {
 
 }
 
-
-
 .diceShow__dice img{
     display: flex;
-    width: 10vw;
+    width: 7vw;
     margin-bottom: 10px;
 }
 .diceShow input{
@@ -141,4 +143,18 @@ td>input {
     list-style-type: none;
     float: left;
     text-align: center;
+}
+
+.pointsDisplay{
+    border: 0!important;
+    color:#191716;
+    font-weight: 700;
+    font-size: 18px;
+    max-width: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    
+}
+tbody th:last-child{
+    border-top: 0!important;
 }
