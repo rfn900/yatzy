@@ -269,11 +269,11 @@ for (let index=0;index<15; index++){
    
   }
   straightTest[0] == 1? 
-  tdShowPoints[10].innerHTML = 20 :
+  tdShowPoints[10].innerHTML = "+"+15 :
   tdShowPoints[10].innerHTML = "<img src='/images/x.png' width= 15px height= 15px/>"
 
   straightTest[1] == 1? 
-  tdShowPoints[11].innerHTML = 25 :
+  tdShowPoints[11].innerHTML = "+"+20 :
   tdShowPoints[11].innerHTML = "<img src='/images/x.png' width= 15px height= 15px/>"
   
 
