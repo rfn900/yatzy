@@ -7,7 +7,7 @@ function showUserAddButton (){
  // console.log(isPlaceholderFilled)
   if (!isPlaceholderFilled) document.getElementById("userAddButton").innerHTML=button;
 }
-
+// My test here!
 /*function confirmUserName () {
 
 let names = [
