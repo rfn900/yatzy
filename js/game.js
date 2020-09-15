@@ -45,11 +45,24 @@ let names_updated = [
 let playButton = document.getElementById("startGameButton")
 let antalSpel = document.getElementById("antalSpel")
 
- 
+manipulateCheckboxes = () =>{
+  let checkBox = []
+  for (let i=0; i<5; i++){
+    checkBox[i] = document.getElementById("save-input-"+(i+1))
+    checkBox[i].style.display = "none"
+  }
+}
+
+playButton.addEventListener("click", countTheDices)
+
+manipulateCheckboxes()
 
 
 function countTheDices(){
+  //checkBox[i].style.display = "flex"
+
   dices=rollTheDice()
+  
 
   count = [0,0,0,0,0,0,0]
   dices.forEach(element => {
@@ -244,7 +257,9 @@ for (let index=0;index<15; index++){
     if(antalRounds==15){
       calculateTotal()
     }
-   
+    
+    manipulateCheckboxes()
+
 
   }) 
 
@@ -390,4 +405,4 @@ for (tdField of pointsDisplay){
 
   })    
 }*/
-playButton.addEventListener("click", countTheDices)
+
