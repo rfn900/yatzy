@@ -82,10 +82,16 @@ td:nth-child(6) {
 }
 
 .info-row td {
-    background-color: #E0E2DB;
+    background-color: #E0E2DB!important;
     border: 2px black solid;
 }
-
+.info-row-point {
+    background-color: #E0E2DB;
+    color: #3D348B;
+    text-align: center;
+    font-weight: bold;
+    
+}
 .info-row-main {
     font-weight: 900;
     background-color:#3D348B!important;

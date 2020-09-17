@@ -1,50 +1,18 @@
+// Eventually will remove these global variable declarations from here
+// I don't need any global variable and they only cause confusion. :) 
+
 let tdShowPoints = document.getElementsByClassName("pointsDisplay")
-
-
-function showUserAddButton (){
-  let isPlaceholderFilled = document.getElementById("userAddButton").innerHTML && true
-  let button = "<button class='button' onclick='confirmUserName()'>Add Player</button>"
- // console.log(isPlaceholderFilled)
-  if (!isPlaceholderFilled) document.getElementById("userAddButton").innerHTML=button;
-}
-
-/*function confirmUserName () {
-
-let names = [
-document.getElementById("player_1_input"),
-document.getElementById("player_2_input"),
-document.getElementById("player_3_input"),
-document.getElementById("player_4_input")
-]
-names.forEach((item,index) => {
-  let test = item && true
-  var theid = ""
-  var new_td = ""
-  
-  if (test && (item.value != "")){
-    theid = `player_${index+1}`  
-    var name_display = document.getElementById(theid)
-    new_td = item.value
-    name_display.innerHTML=new_td
-    gameButton = document.getElementById("calculateButton")
-    gameButton.innerHTML = "<button id='startGameButton' class='calculate-button' onclick='countTheDices()'>Click to Play</button>"
-  }else if (test && item.value == ""){
-    let button = "<button class='button' onclick='confirmUserName()'>Add Another Player</button>"
-    document.getElementById("userAddButton").innerHTML=button
-  }
-  
-})
-let names_updated = [
-  document.getElementById("player_1_input"),
-  document.getElementById("player_2_input"),
-  document.getElementById("player_3_input"),
-  document.getElementById("player_4_input")
-  ]
-}*/
-
 let playButton = document.getElementById("startGameButton")
 let antalSpel = document.getElementById("antalSpel")
 
+
+//This event listener starts the whole thing. It triggers the 
+// countThedices() function
+playButton.addEventListener("click", countTheDices)
+
+// This function manipulateCheckboxes() exists only to remove the checkBoxes
+// from screen when the user first loads the page. If the user clicks the playButton
+// then the checkboxes pop back on the screen
 manipulateCheckboxes = () =>{
   let checkBox = []
   for (let i=0; i<5; i++){
@@ -53,107 +21,87 @@ manipulateCheckboxes = () =>{
   }
 }
 
-playButton.addEventListener("click", countTheDices)
-
 manipulateCheckboxes()
 
+// This is the main function. This is what it does:
+// 1) I first callback the rollTheDices() function to fire the random dice generator
+// 2) I generate theat array with the number of counts for each dice result [0,0,0,3,0,2,0] -> this is a Kåk - 3 and 5
+// 3) Then I write the results on screen on a <td></td> element on the right side of the table 
+//    so the user can choose their points. This is where I calculate all the points of the game
+// 4) This function returns the count array 
 
 function countTheDices(){
-  //checkBox[i].style.display = "flex"
 
   dices=rollTheDice()
   
-
   count = [0,0,0,0,0,0,0]
   dices.forEach(element => {
     count[element]++
   })
 
   writeResultOnScreen(count)
-
-  console.log(count)
-  //isFullHouse(count)
   
   return count
 }
 
-function calculateTotal (){
-  let sum = 0
-  let underSum = 0    
-  let bonus = 50
-  let upperRowValue=0
-  let underRowValue=0
-  for (let i=0; i<14; i++){
-    if (i<6) {
-      upperRowValue = Number(document.getElementById(`player1-${i+1}`).innerHTML)
-      sum += upperRowValue
-    } else{
-      underRowValue = Number(document.getElementById(`player1-${i+1}`).innerHTML)
-      underSum += underRowValue
-    } 
-   
-    
-  }
-  if (sum>=63) {
-    sum += bonus
-    document.getElementById("bonus").innerHTML=bonus    
-  }else document.getElementById("bonus").innerHTML="0"
-  
-  document.getElementById("summa").innerHTML=sum
-  document.getElementById("totalSumma").innerHTML=sum + underSum
-  
-
-}
+// This is the function that starts the process. Here is where I set the functionality of the checkboxes. 
+// Where I remove, add and read the dice results from the dice pictures. 
 
 function rollTheDice(){
-  console.log('aqui')
+
   let antalSpel = document.getElementById("antalSpel")
   let antalSpelNumber = Number(antalSpel.innerText)
   let btnPlaceHolder = document.getElementById("calculateButton")
+
+  // Here I choose to not show (display = "none") the <td> element which shows the points on the right 
+  // in case that pointField is already populated with the user's point for the category.
+  // Ex.: if the user already got a Kåk, then the option to get points from a Kåk are NOT going to show anymore!
 
   for (let i=0;i<15;i++){
     let pointField = document.getElementById("player1-"+(i+1))
     if (pointField.innerText == "") tdShowPoints[i].style.display="inline"
     else tdShowPoints[i].style.display="none"
-
   }
 
+  // Start a checkbox array and store their checked property in the array (only true or false)
   checkboxArray=[]
   for (let j=0; j<5; j++){
     checkboxArray[j]=document.getElementById("save-input-"+(j+1)).checked
-   // console.log(checkboxArray)
   }
- // [false,true,false,false,true]
+
   let nofsides = 6
   let dice = []
-  //let antalSpel = Number(document.getElementById("antalSpel").innerText)
+
+  // Here I choose when to run the random dices and when to simply keep them depending on the checked property
+  // of the checkboxes!!!
   if (antalSpelNumber>0){
     for (let i=0; i<5; i++){
-      if(!checkboxArray[i]){
+      if(!checkboxArray[i]){          // Will only run dices for the unchecked checkboxes (checkboxArray[i]===false)
         dice[i]=Math.floor(Math.random() * nofsides) +1
         let updatefield = `<img src='./images/Alea_${dice[i]}.png'><input id="save-input-${(i+1)}" type="checkbox">`
         document.getElementById("dice-show-"+(i+1)).innerHTML=updatefield
       }else {
+        // If the checkboxes are checked then I will simply read the result of the dice[i] from the image above that checkbox
         let imgstr = document.getElementById("dice-show-"+(i+1)).firstChild.src
-        dice[i] = Number(imgstr.split("_")[1].slice(0,1))
-        //dice[i] = Number(imgstr.slice(15,1))
+        dice[i] = Number(imgstr.split("_")[1].slice(0,1)) // It doesn't work to just slice the string. We don't always know the full address       
       }
     }
-    antalSpel.innerHTML = antalSpelNumber-1  
+    antalSpel.innerHTML = antalSpelNumber-1  // Here I update the number of plays a user has 
   }
 if (antalSpelNumber == 1){
     for(let i=0; i<5; i++){
    //   playbox__title.innerHTML = "Pick Your Points"
       let imgstr = document.getElementById("dice-show-"+(i+1)).firstChild.src
       dice[i] = Number(imgstr.split("_")[1].slice(0,1))
-      console.log(dice[i])
     }
     
-    btnPlaceHolder.style.display= "none"
+    btnPlaceHolder.style.display= "none" // I remove the button after the 3 plays are done.
+    //btnPlaceHolder.firstChild.setAttribute("disabled", "")
 }
  // console.log(dice)
   return dice
 }
+
 
 function writeResultOnScreen(count){
   let sum = [0,0,0,0,0,0]
@@ -190,7 +138,6 @@ function writeResultOnScreen(count){
       if(element >= 3){
         fhPoints[1]=index
         tdShowPoints[8].innerHTML = "+"+index*3
-        console.log(tdShowPoints[9].innerHTML)
       }
       let atLeastThree = isThreeCounts||isFourCounts||isYatzy
       if (!atLeastThree){
@@ -207,8 +154,7 @@ function writeResultOnScreen(count){
       
       if ((element == 5) && isYatzy){
         tdShowPoints[14].innerHTML = "+"+50
-      }else if (!isYatzy) tdShowPoints[14].innerHTML = "<img src='/images/x.png' width= 15px height= 15px/>"
-      
+      }else if (!isYatzy) tdShowPoints[14].innerHTML = "<img src='/images/x.png' width= 15px height= 15px/>"     
 
     }
 
@@ -232,15 +178,15 @@ for (let index=0;index<15; index++){
     }
   }
 
-  tdShowPoints[index].addEventListener("click", function(){
+  tdShowPoints[index].addEventListener("click", () => {
     let btnPlaceHolder = document.getElementById("calculateButton")
     btnPlaceHolder.style.display = "block"
     !isNaN(Number(tdShowPoints[index].innerHTML))? 
     pointTableNumber = Number(tdShowPoints[index].innerHTML):
     pointTableNumber = 0
-    console.log(pointTableNumber+'***************')
-    document.getElementById("player1-"+(index+1)).innerHTML= pointTableNumber
 
+    document.getElementById("player1-"+(index+1)).innerHTML= pointTableNumber
+    document.getElementById("player1-"+(index+1)).classList.add("info-row-point")
     roundSpan.innerText = roundSpanNumber + 1
     antalSpel.innerText = "3"
 
@@ -250,10 +196,15 @@ for (let index=0;index<15; index++){
     } 
     for (let i = 0; i<15; i++){
       tdShowPoints[i].style.display="none"
+      
+      
 
       if (i<5) document.getElementById("save-input-"+(i+1)).checked = false
    }
     tdShowPoints[index].style.display = "none"
+    
+
+    //tdShowPoints[index].remove()
     if(antalRounds==15){
       calculateTotal()
     }
@@ -343,66 +294,30 @@ for (let index=0;index<15; index++){
 
 }
 
-function isFullHouse(count){
-    //diceResults=[1,1,6,6,6]
-   // diceResults = rollTheDice()
-   // console.log(diceResults)
-    var is3Reps =false
-    var is2Reps =false
-    var isFH = false
- 
-  //diceResults.forEach((element) => {
+function calculateTotal (){
+  let sum = 0
+  let underSum = 0    
+  let bonus = 50
+  let upperRowValue=0
+  let underRowValue=0
+  for (let i=0; i<14; i++){
+    if (i<6) {
+      upperRowValue = Number(document.getElementById(`player1-${i+1}`).innerHTML)
+      sum += upperRowValue
+    } else{
+      underRowValue = Number(document.getElementById(`player1-${i+1}`).innerHTML)
+      underSum += underRowValue
+    } 
    
-    //count[element]++    
     
-    /*if (element==1){
-          count[0]++
-        }else if (element == 2){
-          count[1]++
-        }else if (element == 3){
-          count[2]++
-        }else if (element == 4){
-          count[3]++
-        }else if (element == 5){
-          count[4]++
-        }else if (element == 6){
-          count[5]++
-        } */        
- // })
+  }
+  if (sum>=63) {
+    sum += bonus
+    document.getElementById("bonus").innerHTML=bonus    
+  }else document.getElementById("bonus").innerHTML="0"
+  
+  document.getElementById("summa").innerHTML=sum
+  document.getElementById("totalSumma").innerHTML=sum + underSum
+  
 
-  count.forEach((element) => {
-
-    if (element == 3){
-        is3Reps = true
-    }
-    if (element == 2){
-        is2Reps=true
-    }
-
-  })
-
-  if (is2Reps && is3Reps){
-      isFH = true;
-      document.getElementById("fh-player1").innerHTML="Yeahhh"   
-  }else document.getElementById("fh-player1").innerHTML="Nope" 
-    
-  isFH? console.log("Is FullHouse"):console.log("Is Not Fullhouse")
 }
-/*
-let diceshowbox = document.getElementById("diceShowBox")
-let pointsDisplay = document.getElementsByClassName("pointsDisplay")
-
-for (tdField of pointsDisplay){
-  tdField.addEventListener("mouseover", function(e){
-    let field = e.target.innerHTML="+23"
-    
-    console.log(field)
-
-  })
-  tdField.addEventListener("mouseout", function(e){
-    let field = e.target.style.background=""
-    console.log(field)
-
-  })    
-}*/
-
