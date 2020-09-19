@@ -262,7 +262,12 @@ for (let index=0;index<15; index++){
 
   if (parCase[0]*parCase[1] != 0){
     tdShowPoints[7].innerHTML = "+"+(parCase[1]+parCase[0])
-  }else tdShowPoints[7].innerHTML = "<img src='/images/x.png' width= 15px height= 15px/>"
+  }else if (count.includes(4)) {
+    tdShowPoints[7].innerHTML = "+"+count.indexOf(4)*4
+  }else if (count.includes(5)){
+    tdShowPoints[7].innerHTML = "+"+count.indexOf(5)*4
+  }
+  else tdShowPoints[7].innerHTML = "<img src='/images/x.png' width= 15px height= 15px/>"
 /*
 
   for(i=0; i<6; i++){
