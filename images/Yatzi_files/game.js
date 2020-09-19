@@ -53,15 +53,13 @@ function rollTheDice(){
   let antalSpelNumber = Number(antalSpel.innerText)
   let btnPlaceHolder = document.getElementById("calculateButton")
 
-  let chatRoom = document.getElementById("chat-room")
-  chatRoom.style.display = "none"
   // Here I choose to not show (display = "none") the <td> element which shows the points on the right 
   // in case that pointField is already populated with the user's point for the category.
   // Ex.: if the user already got a Kåk, then the option to get points from a Kåk are NOT going to show anymore!
 
   for (let i=0;i<15;i++){
     let pointField = document.getElementById("player1-"+(i+1))
-    if (pointField.innerText == "") tdShowPoints[i].style.display="block"
+    if (pointField.innerText == "") tdShowPoints[i].style.display="inline"
     else tdShowPoints[i].style.display="none"
   }
 
@@ -85,20 +83,17 @@ function rollTheDice(){
       }else {
         // If the checkboxes are checked then I will simply read the result of the dice[i] from the image above that checkbox
         let imgstr = document.getElementById("dice-show-"+(i+1)).firstChild.src
-
         dice[i] = Number(imgstr.split("_")[1].slice(0,1)) // It doesn't work to just slice the string. We don't always know the full address       
       }
-      // http://mywebsite.com/images/Alea_1.png
-
     }
     antalSpel.innerHTML = antalSpelNumber-1  // Here I update the number of plays a user has 
   }
 if (antalSpelNumber == 1){
-     for(let i=0; i<5; i++){
-    //   playbox__title.innerHTML = "Pick Your Points"
-       let imgstr = document.getElementById("dice-show-"+(i+1)).firstChild.src
-       dice[i] = Number(imgstr.split("_")[1].slice(0,1))
-     }
+    for(let i=0; i<5; i++){
+   //   playbox__title.innerHTML = "Pick Your Points"
+      let imgstr = document.getElementById("dice-show-"+(i+1)).firstChild.src
+      dice[i] = Number(imgstr.split("_")[1].slice(0,1))
+    }
     
     btnPlaceHolder.style.display= "none" // I remove the button after the 3 plays are done.
     //btnPlaceHolder.firstChild.setAttribute("disabled", "")
@@ -107,8 +102,7 @@ if (antalSpelNumber == 1){
   return dice
 }
 
-// count = [0, 0, 1, 0, 0, 0, 4]
-//    dice = [2, 6, 6, 6, 6]
+
 function writeResultOnScreen(count){
   let sum = [0,0,0,0,0,0]
 // console.log(Number(tmp1))
@@ -128,8 +122,8 @@ function writeResultOnScreen(count){
 
   let straightTest = [1,1]
   
-  let isFH = isThreeCounts && isTwoCounts // 3 5or och 2 6or = 27pg
-  let fhPoints = [0,0] 
+  let isFH = isThreeCounts && isTwoCounts
+  let fhPoints = [0,0]
  
   count.forEach((element,index)=>{
     
@@ -306,8 +300,6 @@ function calculateTotal (){
   let bonus = 50
   let upperRowValue=0
   let underRowValue=0
-  let summa = document.getElementById("summa")
-  let totalSumma = document.getElementById("totalSumma")
   for (let i=0; i<14; i++){
     if (i<6) {
       upperRowValue = Number(document.getElementById(`player1-${i+1}`).innerHTML)
@@ -324,10 +316,8 @@ function calculateTotal (){
     document.getElementById("bonus").innerHTML=bonus    
   }else document.getElementById("bonus").innerHTML="0"
   
-  summa.innerHTML=sum
-  summa.classList.add("final-score")
-  totalSumma.innerHTML=sum + underSum
-  totalSumma.classList.add("final-score")
+  document.getElementById("summa").innerHTML=sum
+  document.getElementById("totalSumma").innerHTML=sum + underSum
   
 
 }

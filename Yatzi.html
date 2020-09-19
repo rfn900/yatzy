@@ -9,12 +9,23 @@
 </head>
 
 <body>
+    <div id="header" class="header">
+        <div class="logo"><h1>YATZY</h1></div>
+        <div class="menu-nav">
+            <ul>
+                <li><a href="#">My Profile</a></li>
+                <li><a href="#">My Scores</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+        </div>
+    </div>
     <div class="container">
+     
         
         <div id="playbox" class="playbox">
             
          
-            <h2 id="playbox__title">
+            <h2 id="playbox__title" class="playbox-title">
                 Round <span id="antalRounds">1</span> of 16, 
                 Dice rolls: <span id="antalSpel">3</span>
             </h2>
@@ -222,9 +233,48 @@
 
 
         </div>
-
+       
     </div>
-
+    <footer>
+        
+       <div class="footer-images">     
+           
+               <img src="images/Facebook-logo.png" alt="Facebook">
+               <img src="images/Instagram-logo.png" alt="Instagram">
+               <img src="images/LinkedIn-logo.png" alt="LinkedIn">
+        
+    </div>
+        
+    
+ 
+     </footer>
+     <div id="chat-room" class="chat-room">
+         <div class="chat-top-bar">
+             <img src="images/minimize.png" alt="minimize"><img src="images/close.png" alt="close">
+         </div>
+         <div class="chat-body">
+            <div class="message-box">
+                <p>Massa chats here</p>
+                <span class="chat-username">Barack Obama</span>
+            </div>
+            <div class="message-box">
+                <p>Whats up bro</p>
+                <span class="chat-username">You</span>
+            </div>
+            <div class="message-box">
+                <p> Eh nois na ficta</p>
+                <span class="chat-username">Barack Obama</span>
+            </div>
+            <div class="message-box">
+                <p> Mais um</p>
+                <span class="chat-username">You</span>
+            </div>
+        </div>
+        <div class="input-area">
+            <input type="text" id="chat-input" class="chat-input" name="input-chat-field" placeholder="Send Smth Here...">
+            <img src="images/send.png" alt="send button">
+        </div>
+    </div>
     <script src="js/game.js"></script>
 </body>
 
