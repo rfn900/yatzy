@@ -3,14 +3,13 @@ body {
     margin: 0;
     height: 100%;
     background-color: #E0E2DB;
-    font-family: montserrat;
 
 }
 
 .container {
     margin: auto;
     display: flex;
-    height: 95vh;
+    height: 100vh;
     width: 80vw;
     justify-content: space-evenly;
     flex-wrap: wrap;
@@ -83,11 +82,8 @@ td:nth-child(6) {
 }
 
 .info-row td {
-    background-color: #E0E2DB;
+    background-color: #E0E2DB!important;
     border: 2px black solid;
-    text-align: center;
-    font-weight: 700;
-    
 }
 .info-row-point {
     background-color: #E0E2DB;
@@ -119,19 +115,6 @@ td>input {
     margin-left: auto;
     display: flex;
     float:right;
-}
-
-.calculate-button:disabled{
-    opacity: 0.7;
-    height:50px;
-    background-color:#BEB7A4;
-    border: 0;
-    color: #111111;
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 5px;
-    cursor: default;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .button, .calculate-button{
@@ -172,12 +155,17 @@ td>input {
     border: 0!important;
     color:#191716;
     font-weight: 700;
+    font-size: 18px;
     max-width: 10px;
     cursor: pointer;
     font-size: 15px;
+    
 }
 
 .pointsDisplay img{
+    position: relative;
+    top: 50%;
+    background: red;
 
 }
 tbody th:last-child{
@@ -187,7 +175,6 @@ tbody th:last-child{
 .playbox-title{
     text-align: center;
 }
-
 
 .header{
     position:fixed;
@@ -237,149 +224,3 @@ tbody th:last-child{
     background-color: #fff;
     color: #111111
   }
-
-footer{
-    position: fixed;
-    display: flex;
-    bottom: 0;
-    justify-content: center;
-    width: 100%;
-    background-color: #BEB7A4;
-    box-shadow: 8px 4px 8px 0 rgba(0, 0, 0, 0.2), 8px 6px 20px 0 rgba(0, 0, 0, 0.15);
-}
-
-.footer-images{
-      display: flex;
-      justify-content: space-evenly;
-      width: 20%;
-
-  }
-
-  footer img {
-      
-      width: 60px;
-  }
-  .final-score{
-    background-color: #E6AF2E!important;
-}
-
- .chat-room{
-     position: fixed;
-     display: flex;
-     flex-direction: column;
-     z-index: 9999999;
-     right: 5px;
-     bottom: 0;
-     height: 60vh;
-     width: 380px;
-     padding-bottom: 10px;
-     background-color: #fff;
-     justify-content: space-between;
-     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
-
- }
- .chat-body{
-     display: flex;
-     flex-direction: column;
-     margin-left: 10px;
- }
-
- .message-box p{
-     margin-right: 10px;
-     margin-bottom: 8px;
-     display: flex;     
-     background-color: #E0E2DB;
-     padding: 15px 20px;
-     border-radius: 99px;
- }
-
- .message-box:nth-child(even){
-     margin-left: auto;
- }
- .message-box:nth-child(odd){
-    margin-right: auto;
-}
-
- .chat-top-bar{
-     display: flex;
-     position: relative;
-     background-color: #111111;
-     height: 40px;
-     flex-direction: row;
-     justify-content: flex-end;
- }
-
- .input-area{
-     position: relative;
-     display: flex;
-     padding: 0 10px;
-     align-items: center;
- }
-
- .chat-input{
-     position: relative;
-     height: 40px;
-     width: 300px;
-     margin: auto;
-     border-radius: 99px;
-     border: 1px solid #111111;  
-     color: lightgray;
-     font-size: 18px;
-     padding-left: 10px;
-     
- }
- .input-area img{
-     width: 50px;
- }
-
- .chat-top-bar img{
-     cursor: pointer;
-    margin-right: 5px;
-    width: 30px;
- }
-
- .chat-username{
-     font-style: italic;
-     font-size: 12px;
-     margin-left: 10px;
-     padding: 0;
-     color: #313131;
- }
-
- .player-box{
-     z-index: 99;
-     position: absolute;
-     display: flex;
-     flex-direction: column;
-     margin: auto;
-     top: 0;
-     left: 0;
-     width: 100vw;
-     height: 100vh;
-     background-color:rgba(0, 0, 0, 0.95);
-     align-items: center;
-     justify-content: center;
- }
-
-
- .player-box input{
-    width: 50px;
-    height: 50px;
-    font-size: 42px;
-    margin-bottom: 20px;
- }
-
- .player-box-title{
-    font-size: 42px;
-    position: relative;
-    color: white;
-    margin-bottom: 20px;
- }
- .player-box-title span{
-    font-size: 24px;
- }
-
- .player-box .calculate-button{
-     padding: 0 30px;
-     font-size: 32px;
- }
